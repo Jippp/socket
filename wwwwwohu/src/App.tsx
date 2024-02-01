@@ -3,6 +3,7 @@ import { useMemoizedFn } from 'ahooks'
 
 import useWs from './useWs'
 import DetailPage from './module/detail'
+import Poker from './poker'
 
 function App() {
   const wrapRef = useRef<HTMLInputElement>(null)
@@ -20,7 +21,9 @@ function App() {
             allUsers={allUsers}
             currentUser={currentUser}
             selfMessage={selfMessage}
-          />
+          >
+            <Poker />
+          </DetailPage>
         ) : (
           <>
             <input type="text" placeholder='输入用户名称！' ref={wrapRef} />

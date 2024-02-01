@@ -1,14 +1,15 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
-import useStartPoker from './../useStartPoker'
+import useStartPoker from '../poker/useStartPoker'
 
 interface Props {
   selfMessage: string;
   currentUser: string;
   allUsers: string[];
+  children: React.ReactNode
 }
 
-const DetailPage: FC<Props> = ({ selfMessage, currentUser, allUsers }) => {
+const DetailPage: FC<Props> = ({ selfMessage, currentUser, allUsers, children }) => {
   useStartPoker()
   return (
     <>
@@ -18,8 +19,9 @@ const DetailPage: FC<Props> = ({ selfMessage, currentUser, allUsers }) => {
           return <div key={user} className={currentUser === user ? 'self' : ''}>{user}</div>
         })
       ) : null}
+      {children}
     </>
   )
 }
 
-export default DetailPage
+export default memo(DetailPage)
